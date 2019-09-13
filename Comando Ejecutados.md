@@ -21,7 +21,7 @@
 
 `ng generate pipe pipes/bold-word`
 
-## https://ng-bootstrap.github.io/#/components/
+url=https://ng-bootstrap.github.io/#/components/
 `npm install @ng-bootstrap/ng-bootstrap --save`
 
 Datatable
@@ -34,3 +34,9 @@ Datatable
 `npm install jszip --save`
 `npm install datatables.net-buttons --save`
 `npm install datatables.net-buttons-dt --save`
+
+## Para Deploy en Heroku
+url=https://itnext.io/how-to-deploy-angular-application-to-heroku-1d56e09c5147
+`npm install @angular/cli@latest @angular/compiler-cli --save-dev`
+`npm install enhanced-resolve@3.3.0 --save-dev`
+`npm install express path --save`
