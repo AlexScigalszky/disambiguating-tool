@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+.star {
+    color: #b0c4de;
+  }
+  .filled {
+    color: #1e90ff;
+  }
+  .bad {
+    color: #deb0b0;
+  }
+  .filled.bad {
+    color: #ff1e1e;
+  }

@@ -1,0 +1,68 @@
+<div *ngIf="!finished">
+    <form [formGroup]="form" class="text-center">
+
+        <div class="card mb-5 mt-2">
+            <div class="card-body">
+                <blockquote class="blockquote">
+                    <p class="mb-0 h1">“<span [innerHTML]="item?.sentence | boldWord: item?.word"></span>”</p>
+                </blockquote>
+            </div>
+        </div>
+
+        <div class="form-group mb-5">
+            <label for="{{ CATEGORY }}">Choice one Sense tag</label>
+            <br>
+            <div class="btn-group btn-group-toggle">
+                <label class="btn-primary" ngbButtonLabel *ngFor="let category of categoriesAvaliables">
+                    <input type="radio" formControlName="{{ CATEGORY }}" value="{{ category.name }}" ngbButton> {{ category.name }}
+                </label>
+            </div>
+            <br>
+            <a [routerLink]="['/quiz']" fragment="categories-info">Need info</a>
+
+        </div>
+
+        <div class="form-group mb-5">
+            <label for="{{ RATE }}">Define your confidense level</label>
+            <br>
+            <ngb-rating formControlName="{{ RATE }}" class="h1 yellow-text">
+                <ng-template let-fill="fill" let-index="index">
+                    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+                </ng-template>
+            </ngb-rating>
+        </div>
+
+        <button [disabled]="loading" type="button" class="btn btn-primary" (click)="onSubmit()">
+            Save and Go Next
+            <img *ngIf="loading" class="pl-3"
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </button>
+        <button [disabled]="loading" type="button" class="btn btn-muted" (click)="skip()">
+            Skip this one
+            <img *ngIf="loading" class="pl-3"
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </button>
+
+    </form>
+
+    <div id="categories-info" class="mt-3">
+        <h3>Sense tags descriptions</h3>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let category of categoriesAvaliables">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ category.name }}</h5>
+                </div>
+                <p class="mb-1">{{ category.description }}</p>
+            </a>
+        </div>
+    </div>
+    
+</div>
+
+
+<div *ngIf="finished">
+    <div class="jumbotron">
+        <h1 class="display-4 text-center">Congratulations!</h1>
+        <p class="lead text-center">You has finish all sentences</p>
+    </div>
+</div>
