@@ -17,6 +17,7 @@ import { BoldWordPipe } from './pipes/bold-word.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { AnswersComponent } from './components/answers/answers.component';
 import { DataTablesModule } from 'angular-datatables';
+import { AnswersService } from './services/answers.service';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBim5G-Z4OzIGwCK2P-PxhmvRlxrB3JOyM",
@@ -48,7 +49,7 @@ var firebaseConfig = {
     NgbModule,
     DataTablesModule
   ],
-  providers: [AngularFirestore, ConsoleService, NgbRadioGroup],
+  providers: [AngularFirestore, ConsoleService, NgbRadioGroup, AnswersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
