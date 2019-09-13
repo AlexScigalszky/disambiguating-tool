@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ConsoleService {
-  static readonly LOG_ENABLED = !environment.production;
+  static readonly LOG_ENABLED = true;// environment.production;
 
   log(message?: any, ...optionalParams: any[]): void {
     if (ConsoleService.LOG_ENABLED) console.log(message, optionalParams);
