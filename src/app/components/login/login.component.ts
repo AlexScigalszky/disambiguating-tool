@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: [null, Validators.required]
     });
-    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/quiz";
+    this.returnUrl = "/quiz";
   }
 
   get f() {
