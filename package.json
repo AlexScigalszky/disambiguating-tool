@@ -31,7 +31,7 @@
     "datatables.net-dt": "^1.10.19",
     "express": "^4.17.1",
     "firebase": "^6.6.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jszip": "^3.2.2",
     "path": "^0.12.7",
     "rxjs": "~6.4.0",
